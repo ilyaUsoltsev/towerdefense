@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { Topic, Comment, Reply } from '../models';
 import { validateContent } from '../helpers/validateRequest';
-import { AuthRequest } from '../types/auth';
+import type { AuthRequest } from '../types/auth';
 
 export const topicController = {
   async getAll(req: Request, res: Response) {

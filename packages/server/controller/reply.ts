@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { Reply, Comment } from '../models';
 import { validateContent } from '../helpers/validateRequest';
-import { AuthRequest } from '../types/auth';
+import type { AuthRequest } from '../types/auth';
 
 export const replyController = {
   async create(req: Request, res: Response) {

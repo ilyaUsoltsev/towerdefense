@@ -2,7 +2,7 @@ import type { Request, Response } from 'express';
 import { Comment, Reaction, Reply } from '../models';
 import { Op, fn, col } from 'sequelize';
 import { REACTION_TYPE_VALUES, type ReactionType } from '../types/reaction';
-import { AuthRequest } from '../types/auth';
+import type { AuthRequest } from '../types/auth';
 
 export const reactionController = {
   // Поставить / убрать реакцию (toggle)
