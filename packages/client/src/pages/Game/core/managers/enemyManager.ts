@@ -17,6 +17,7 @@ class EnemyManager {
   isSpawning: boolean;
   waveIndex = 0;
   currentWaveEnemiesSpawned = 0;
+  wavesStarted = false;
   private unsubscribe: (() => void) | null = null;
 
   constructor(
@@ -125,6 +126,9 @@ class EnemyManager {
 
   // Часть логики update. Запускается каждый кадр для управления волнами врагов
   private handleWave(currentTime: number) {
+    if (!this.wavesStarted) {
+      return;
+    }
     const allWavesCompleted = this.waveIndex >= wavesConfig.length;
     if (allWavesCompleted) {
       // Остановка игры, все волны завершены

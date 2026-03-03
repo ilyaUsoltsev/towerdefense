@@ -7,6 +7,7 @@ export const isUpgradable = (
 ): boolean => {
   return (
     money >= selectedEntity.upgradeCost &&
-    selectedEntity.level < GameConfig.maxCannonLevel
+    selectedEntity.level < GameConfig.maxCannonLevel &&
+    selectedEntity.upgradeCost > 0
   );
 };

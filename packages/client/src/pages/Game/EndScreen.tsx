@@ -22,12 +22,12 @@ const EndScreen: FC = () => {
   return (
     <Card className={styles.resultCard__wrapper}>
       <h2 className={styles.resultCard__title}>
-        {gameResult?.isWin ? 'Победа' : 'Поражение'}
+        {gameResult?.isWin ? 'Victory' : 'Game Over'}
       </h2>
       <img src="/divider.svg" />
       <div className={styles.resultCard__infoBlock}>
         <div className={styles.resultCard__infoRow}>
-          <span>Счет</span>
+          <span>Score</span>
           <span className={styles.resultCard__value}>
             {gameResult?.score || 0}
           </span>
@@ -35,11 +35,11 @@ const EndScreen: FC = () => {
       </div>
       <div className={styles.resultCard__buttonWrapper}>
         <Button view="action" size="xl" onClick={onRepeatGame}>
-          Повторить
+          Repeat
         </Button>
         <Link to={ROUTE.ROOT} onClick={onClickToMain}>
           <Button view="action" size="xl">
-            На главную
+            Main Menu
           </Button>
         </Link>
       </div>
