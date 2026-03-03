@@ -17,9 +17,9 @@ const CurrentScreen: FC = () => {
     case GAME_STATE.START: {
       return <StartScreen />;
     }
-    case GAME_STATE.LOADING: {
-      return <StartDelayScreen />;
-    }
+    // case GAME_STATE.LOADING: {
+    //   return <StartDelayScreen />;
+    // }
     case GAME_STATE.GAME: {
       return <GameScreen />;
     }

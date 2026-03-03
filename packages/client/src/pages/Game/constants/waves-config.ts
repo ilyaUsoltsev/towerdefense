@@ -9,8 +9,6 @@ export type Wave = {
   reward: number;
 };
 
-const bosses = ['humanoidBoss', 'golemBoss', 'skeletonBoss'] as const;
-
 export const wavesConfig: readonly Wave[] = [
   {
     enemyType: 'normal',
@@ -75,5 +73,37 @@ export const wavesConfig: readonly Wave[] = [
     spawnInterval: 800,
     hp: 500,
     reward: 35,
+  },
+  {
+    enemyType: 'normal',
+    name: 'Normal',
+    count: 7,
+    spawnInterval: 300,
+    hp: 30,
+    reward: 3,
+  },
+  {
+    enemyType: 'fast',
+    name: 'Fast',
+    count: 7,
+    spawnInterval: 200,
+    hp: 40,
+    reward: 3,
+  },
+  {
+    enemyType: 'immune',
+    name: 'Immune',
+    count: 7,
+    spawnInterval: 300,
+    hp: 50,
+    reward: 3,
+  },
+  {
+    enemyType: 'skeletonBoss',
+    name: 'Boss',
+    count: 5,
+    spawnInterval: 700,
+    hp: 800,
+    reward: 50,
   },
 ] as const;

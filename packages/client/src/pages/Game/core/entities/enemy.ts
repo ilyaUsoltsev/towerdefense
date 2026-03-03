@@ -176,19 +176,19 @@ class Enemy {
     );
 
     // Отрисовка пути врага (для дебага)
-    context.strokeStyle = 'rgba(0, 0, 255, 0.3)';
-    context.beginPath();
-    for (let i = this.currentIndex; i < this.path.length; i++) {
-      const tile = this.path[i];
-      const x = tile.x * GameConfig.tileSize + GameConfig.tileSize / 2;
-      const y = tile.y * GameConfig.tileSize + GameConfig.tileSize / 2;
-      if (i === this.currentIndex) {
-        context.moveTo(this.currentPosition.x, this.currentPosition.y);
-      } else {
-        context.lineTo(x, y);
-      }
-    }
-    context.stroke();
+    // context.strokeStyle = 'rgba(0, 0, 255, 0.3)';
+    // context.beginPath();
+    // for (let i = this.currentIndex; i < this.path.length; i++) {
+    //   const tile = this.path[i];
+    //   const x = tile.x * GameConfig.tileSize + GameConfig.tileSize / 2;
+    //   const y = tile.y * GameConfig.tileSize + GameConfig.tileSize / 2;
+    //   if (i === this.currentIndex) {
+    //     context.moveTo(this.currentPosition.x, this.currentPosition.y);
+    //   } else {
+    //     context.lineTo(x, y);
+    //   }
+    // }
+    // context.stroke();
   }
 
   private takeEffect(effect: Effect): void {

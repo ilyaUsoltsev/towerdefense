@@ -61,19 +61,11 @@ class MapManager {
   }
 
   renderStart() {
-    this.renderTiles(
-      this.getTiles('Start'),
-      ['/mapBorder.png', '/gameStart.png'],
-      'green'
-    );
+    this.renderTiles(this.getTiles('Start'), ['/gameStart.png'], 'green');
   }
 
   renderFinish() {
-    this.renderTiles(
-      this.getTiles('Finish'),
-      ['/mapBorder.png', '/gameFinish.png'],
-      'red'
-    );
+    this.renderTiles(this.getTiles('Finish'), ['/gameFinish.png'], 'red');
   }
 
   renderCursorTile() {

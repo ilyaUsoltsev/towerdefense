@@ -9,7 +9,7 @@ const StartScreen: FC = () => {
   const dispatch = useDispatch();
 
   const onStartGame = () => {
-    dispatch(gameSetState(GAME_STATE.LOADING));
+    dispatch(gameSetState(GAME_STATE.GAME));
   };
 
   return (
@@ -19,7 +19,7 @@ const StartScreen: FC = () => {
         size="xl"
         className={styles.startButton}
         onClick={onStartGame}>
-        Старт
+        Start Game
       </Button>
     </div>
   );
