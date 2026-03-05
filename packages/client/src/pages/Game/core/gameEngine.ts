@@ -6,7 +6,7 @@ import EnemyManager from './managers/enemyManager';
 import Player from './entities/player';
 import { GameConfig } from '../constants/game-config';
 import { assetsManager } from './managers/assetsManager';
-import { SoundLib } from '../../../audio/audio';
+import { SoundLib, StopSound } from '../../../audio/audio';
 
 class GameEngine {
   mapManager!: MapManager;
@@ -79,6 +79,7 @@ class GameEngine {
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
     }
+    StopSound('backgroundMusic');
     this.cannonManager.removeEventListeners();
     this.mapManager.removeEventListeners();
     this.enemyManager.removeEventListeners();
@@ -95,6 +96,10 @@ class GameEngine {
       this.pathManager.setCollisionMap(this.mapManager.collisionMap);
     }
     return this.player.getMoney();
+  }
+
+  setWavesStarted(wavesStarted: boolean) {
+    this.enemyManager.wavesStarted = wavesStarted;
   }
 
   upgradeCannon(cannonId: string): number | null {

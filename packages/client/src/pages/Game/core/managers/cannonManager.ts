@@ -11,7 +11,9 @@ class CannonManager {
   context: CanvasRenderingContext2D;
   cannons: Map<string, Cannon> = new Map();
   private projectileManager: ProjectileManager;
-  private unsubscribe: (() => void) | null = null;
+  private unsubscribeCannonPlaced: (() => void) | null = null;
+  private unsubscribeSelectedCannon: (() => void) | null = null;
+
   private player: Player;
 
   constructor(context: CanvasRenderingContext2D, player: Player) {
@@ -79,17 +81,33 @@ class CannonManager {
   }
 
   removeEventListeners(): void {
-    if (this.unsubscribe) {
-      this.unsubscribe();
+    if (this.unsubscribeCannonPlaced) {
+      this.unsubscribeCannonPlaced();
+    }
+    if (this.unsubscribeSelectedCannon) {
+      this.unsubscribeSelectedCannon();
     }
   }
 
   private addEventListeners(): void {
-    this.unsubscribe = eventBus.on(
+    this.unsubscribeCannonPlaced = eventBus.on(
       'mapManager:cannonPlaced',
       ({ tile, cannonType }: { tile: Tile; cannonType: CannonType }) => {
         this.addCannon(tile, cannonType);
         this.player.subtractMoney(CannonsConfig[cannonType].cost);
+      }
+    );
+
+    this.unsubscribeSelectedCannon = eventBus.on(
+      'redux:selectedCannon',
+      ({ x, y }: { x: number; y: number }) => {
+        for (const c of this.cannons.values()) {
+          if (c.position.x === x && c.position.y === y) {
+            c.selected = true;
+          } else {
+            c.selected = false;
+          }
+        }
       }
     );
   }

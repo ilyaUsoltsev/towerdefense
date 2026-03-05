@@ -73,7 +73,7 @@ const GameMenu = () => {
 
       {selectedEntity && (
         <Card className="p-2 flex-col gap-2">
-          <p>ID: {selectedEntity.id}</p>
+          {/* <p>ID: {selectedEntity.id}</p> */}
           <p>Type: {selectedEntity.type}</p>
           <p>Level: {selectedEntity.level}</p>
           <p>Damage: {Math.round(selectedEntity.damage)}</p>
@@ -87,10 +87,10 @@ const GameMenu = () => {
             view="action"
             onClick={upgradeSelectedEntity}
             disabled={!isUpgradable(money, selectedEntity)}>
-            Апгрейд
+            Upgrade
           </Button>
           <Button view="outlined" onClick={sellSelectedEntity}>
-            Продать
+            Sell
           </Button>
         </Card>
       )}

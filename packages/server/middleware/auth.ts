@@ -50,7 +50,7 @@ export const optionalAuthMiddleware = async (
 export const authMiddleware = async (
   req: AuthRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const cookies = req.headers.cookie;

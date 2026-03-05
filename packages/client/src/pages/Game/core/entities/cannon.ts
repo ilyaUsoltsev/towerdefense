@@ -27,6 +27,7 @@ class Cannon {
   cannonType: CannonType;
   cannonConfig: CannonProps;
   upgradeCost: number;
+  selected = false;
   effect: Effect | null;
   private projectileManager: ProjectileManager;
 
@@ -138,11 +139,12 @@ class Cannon {
         this.tileSize
       );
     }
-
-    context.strokeStyle = 'rgba(0, 0, 0, 0.2)';
-    context.beginPath();
-    context.arc(center.x, center.y, this.range, 0, 2 * Math.PI);
-    context.stroke();
+    if (this.selected) {
+      context.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+      context.beginPath();
+      context.arc(center.x, center.y, this.range, 0, 2 * Math.PI);
+      context.stroke();
+    }
   }
 }
 

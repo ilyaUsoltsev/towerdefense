@@ -61,17 +61,18 @@ class PathManager {
   public renderPathStartFinish() {
     const image = assetsManager.get('/path.png');
 
-    this.statFinishPath.forEach(tile => {
-      if (tile.x !== 0 && tile.x !== 24) {
-        this.context.drawImage(
-          image,
-          tile.x * this.tileSize,
-          tile.y * this.tileSize,
-          this.tileSize,
-          this.tileSize
-        );
-      }
-    });
+    // Debug: отрисовка пути от старта до финиша
+    // this.statFinishPath.forEach(tile => {
+    //   if (tile.x !== 0 && tile.x !== 24) {
+    //     this.context.drawImage(
+    //       image,
+    //       tile.x * this.tileSize,
+    //       tile.y * this.tileSize,
+    //       this.tileSize,
+    //       this.tileSize
+    //     );
+    //   }
+    // });
   }
 
   private async trySetCollisionMap(
