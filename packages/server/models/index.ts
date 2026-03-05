@@ -49,3 +49,4 @@ export { Topic } from './topic';
 export { Comment } from './comment';
 export { Reply } from './reply';
 export { Reaction } from './reaction';
+export { UserPreference } from './userPreference';

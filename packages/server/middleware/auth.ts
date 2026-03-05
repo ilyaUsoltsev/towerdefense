@@ -25,6 +25,28 @@ const verifyUser = async (cookies: string): Promise<UserData> => {
   return (await response.json()) as UserData;
 };
 
+export const optionalAuthMiddleware = async (
+  req: AuthRequest,
+  _res: Response,
+  next: NextFunction
+) => {
+  try {
+    const cookies = req.headers.cookie;
+    if (cookies) {
+      const cacheKey = createCacheKey(cookies);
+      let userData = sessionCache.get<UserData>(cacheKey) || null;
+      if (!userData) {
+        userData = await verifyUser(cookies);
+        sessionCache.set(cacheKey, userData, config.CACHE_TTL_SECONDS);
+      }
+      if (userData) req.user = userData;
+    }
+  } catch {
+    // Неудача авторизации — нормально для опционального middleware
+  }
+  return next();
+};
+
 export const authMiddleware = async (
   req: AuthRequest,
   res: Response,
