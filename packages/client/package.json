@@ -13,6 +13,7 @@
     "build:server": "tsc server/index.ts --module commonjs --esModuleInterop true --declaration"
   },
   "dependencies": {
+    "@gravity-ui/icons": "^2.16.0",
     "@gravity-ui/uikit": "^7.28.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/react-helmet": "^6.1.7",

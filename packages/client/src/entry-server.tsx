@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom/server';
 import { matchRoutes } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
+import { ThemeProvider } from '@gravity-ui/uikit';
 
 import {
   createContext,
@@ -21,6 +22,8 @@ import { reducer } from './store';
 import { routes } from './routes';
 import './index.css';
 import { setPageHasBeenInitializedOnServer } from './slices/ssrSlice';
+import { setTheme } from './slices/themeSlice';
+import { SERVER_HOST } from './constants';
 
 export const render = async (req: ExpressRequest) => {
   const { query, dataRoutes } = createStaticHandler(routes);
@@ -60,13 +63,27 @@ export const render = async (req: ExpressRequest) => {
 
   store.dispatch(setPageHasBeenInitializedOnServer(true));
 
+  try {
+    const themeRes = await fetch(`${SERVER_HOST}/api/theme`, {
+      headers: { cookie: req.headers.cookie ?? '' },
+    });
+    if (themeRes.ok) {
+      const { theme } = await themeRes.json();
+      store.dispatch(setTheme(theme));
+    }
+  } catch {
+    // default theme used
+  }
+
   const router = createStaticRouter(dataRoutes, context);
   const sheet = new ServerStyleSheet();
   try {
     const html = ReactDOM.renderToString(
       sheet.collectStyles(
         <Provider store={store}>
-          <StaticRouterProvider router={router} context={context} />
+          <ThemeProvider theme={store.getState().theme.theme}>
+            <StaticRouterProvider router={router} context={context} />
+          </ThemeProvider>
         </Provider>
       )
     );

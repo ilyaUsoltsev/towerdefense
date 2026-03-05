@@ -10,6 +10,7 @@ export const themeController = {
     try {
       const userid = (req as AuthRequest).user?.id;
       if (!userid) {
+        // Unauthenticated users always get the default theme; no DB lookup needed.
         return res.status(200).json({ theme: DEFAULT_THEME });
       }
       const preference = await UserPreference.findOne({ where: { userid } });

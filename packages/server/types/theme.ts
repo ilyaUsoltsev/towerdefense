@@ -1,7 +1,2 @@
-export const THEMES = {
-  light: 'light',
-  dark: 'dark',
-} as const;
-
-export type Theme = keyof typeof THEMES;
-export const THEME_VALUES = Object.values(THEMES) as Theme[];
+export const THEME_VALUES = ['light', 'dark'] as const;
+export type Theme = typeof THEME_VALUES[number];

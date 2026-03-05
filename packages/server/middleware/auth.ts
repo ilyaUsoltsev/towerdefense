@@ -1,5 +1,5 @@
 import * as crypto from 'crypto';
-import { NextFunction, Response } from 'express';
+import type { NextFunction, Response } from 'express';
 import NodeCache from 'node-cache';
 import type { AuthRequest, UserData } from '../types/auth';
 import { config } from './config';

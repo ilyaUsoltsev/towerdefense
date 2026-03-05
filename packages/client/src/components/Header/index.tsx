@@ -10,6 +10,8 @@ import { useAuth } from '../../hooks/useAuth';
 
 import { ROUTE } from '../../constants/ROUTE';
 
+import ThemeToggle from '../ThemeToggle';
+
 import styles from './Header.module.css';
 
 const Header: FC = () => {
@@ -25,9 +27,12 @@ const Header: FC = () => {
         </div>
       </Link>
 
-      <button className={styles.iconButton} onClick={logout}>
-        <ArrowRightFromSquare />
-      </button>
+      <div className={styles.actions}>
+        <ThemeToggle />
+        <button className={styles.iconButton} onClick={logout}>
+          <ArrowRightFromSquare />
+        </button>
+      </div>
     </div>
   );
 };

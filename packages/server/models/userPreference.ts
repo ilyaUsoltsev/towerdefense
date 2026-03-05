@@ -1,6 +1,6 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '../db';
-import { THEME_VALUES, THEMES, type Theme } from '../types/theme';
+import { THEME_VALUES, type Theme } from '../types/theme';
 
 interface UserPreferenceAttributes {
   id: number;
@@ -33,7 +33,7 @@ UserPreference.init(
     theme: {
       type: DataTypes.ENUM(...THEME_VALUES),
       allowNull: false,
-      defaultValue: THEMES.light,
+      defaultValue: 'light',
     },
   },
   {

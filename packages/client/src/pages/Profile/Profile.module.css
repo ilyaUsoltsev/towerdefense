@@ -18,6 +18,18 @@
   gap: 24px;
 }
 
+.themeSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--g-color-text-primary);
+}
+
 /* Используем значение из constants/styles.ts: BREAKPOINTS.mobile = 768px */
 @media (max-width: 768px) {
   .profilePage {

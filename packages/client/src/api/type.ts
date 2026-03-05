@@ -31,3 +31,6 @@ export type LoginRequestData = {
 export type OauthServiceIdResponse = {
   service_id: string;
 };
+
+export type Theme = 'light' | 'dark';
+export type ThemeResponse = { theme: Theme };

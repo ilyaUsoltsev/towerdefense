@@ -1,4 +1,6 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 import cors from 'cors';
 import express from 'express';
@@ -9,7 +11,14 @@ import { authMiddleware, optionalAuthMiddleware } from './middleware/auth';
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      process.env.CLIENT_ORIGIN ||
+      `http://localhost:${process.env.CLIENT_PORT || 3000}`,
+    credentials: true,
+  })
+);
 app.use('/api', optionalAuthMiddleware, themeRoutes);
 app.use('/api', authMiddleware, apiRoutes);
 

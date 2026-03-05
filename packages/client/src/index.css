@@ -23,6 +23,11 @@ body,
   --header-height: 70px;
 }
 
+body {
+  background-color: var(--g-color-base-background);
+  color: var(--g-color-text-primary);
+}
+
 /* Tailwind like unitility classes */
 
 .flex-col {

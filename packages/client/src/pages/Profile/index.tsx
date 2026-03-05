@@ -5,6 +5,7 @@ import { PageInitArgs } from '../../routes';
 import { AvatarUpload } from '../../components/AvatarUpload';
 import { ProfileForm } from '../../components/ProfileForm';
 import { PasswordForm } from '../../components/PasswordForm';
+import ThemeToggle from '../../components/ThemeToggle';
 import styles from './Profile.module.css';
 
 export const ProfilePage = () => {
@@ -19,6 +20,10 @@ export const ProfilePage = () => {
         <AvatarUpload user={user} />
         <ProfileForm user={user} />
         <PasswordForm />
+        <div className={styles.themeSection}>
+          <h2 className={styles.sectionTitle}>Тема оформления</h2>
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   );
